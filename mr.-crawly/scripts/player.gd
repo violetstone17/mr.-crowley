@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		#$AnimatedSprite2D.stop()
 		pass #delete this when you bring back sprite animation
 	
-	position = position.clamp(Vector2.ZERO, (screen_size - Vector2(40, 40))) #the -20 will need to be adjusted later to account for different sprite size
+	#no longer need to clamp player to viewport (since it's going to change alwyas) will keep here in case
+	#position = position.clamp(Vector2.ZERO, (screen_size - Vector2(40, 40))) #the -20 will need to be adjusted later to account for different sprite size
 
 	move_and_slide()

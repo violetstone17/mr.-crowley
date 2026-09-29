@@ -16,3 +16,6 @@ shape = SubResource("RectangleShape2D_w600r")
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.50108993, 0, 0.22309664, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=440404741]
+position_smoothing_enabled = true
