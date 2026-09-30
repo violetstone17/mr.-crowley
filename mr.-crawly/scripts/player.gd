@@ -3,7 +3,7 @@ extends CharacterBody2D
 #set as a const so it can be modified here and only here.
 #any modulation of player speed can come from an external multiplyer somewhere else
 @export var speed = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -800.0
 var screen_size #size of game window
 
 func _ready() -> void:
@@ -11,8 +11,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -26,11 +26,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
-	direction = Input.get_axis("moveUp", "moveDown")
-	if direction:
-		velocity.y = direction * speed
-	else:
-		velocity.y = move_toward(velocity.y, 0, speed)
+	#direction = Input.get_axis("moveUp", "moveDown")
+	#if direction:
+		#velocity.y = direction * speed
+	#else:
+		#velocity.y = move_toward(velocity.y, 0, speed)
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed # normalize set's length back to 1 (unit length)
