@@ -3,10 +3,11 @@ extends CharacterBody2D
 #set as a const so it can be modified here and only here.
 #any modulation of player speed can come from an external multiplyer somewhere else
 @export var speed = 300.0
-const JUMP_VELOCITY = -800.0
+const JUMP_VELOCITY = -450.0
 var screen_size #size of game window
 
 func _ready() -> void:
+	add_to_group("player")
 	screen_size = get_viewport_rect().size
 
 func _physics_process(delta: float) -> void:
@@ -33,8 +34,9 @@ func _physics_process(delta: float) -> void:
 		#velocity.y = move_toward(velocity.y, 0, speed)
 	
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed # normalize set's length back to 1 (unit length)
+		#velocity = velocity.normalized() * speed # normalize set's length back to 1 (unit length)
 		#$AnimatedSprite2D.play()
+		pass
 	else:
 		#$AnimatedSprite2D.stop()
 		pass #delete this when you bring back sprite animation
