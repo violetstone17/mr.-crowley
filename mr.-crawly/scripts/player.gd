@@ -1,23 +1,50 @@
 extends CharacterBody2D
 
-#set as a const so it can be modified here and only here.
-#any modulation of player speed can come from an external multiplyer somewhere else
+# --- EXPORTS:
 @export var speed = 300.0
-const JUMP_VELOCITY = -450.0
-var screen_size #size of game window
+@export var baseAttackDamage: int = 10
+@export var attackCooldownTime: float = 0.5 #seconds between swings
+
+# --- STATE
+var attackCooldown: float = 0.0 	#counts down to 0; 0 means 'can attack'
+
+# --- NODE REFERENCES
+# the hitbox Area2D that sits infront of the player
+@onready var attackHitbox: Area2D = $hitbox
+
+# The hitbox's shape. We disable/enable the SHAPE, never the Area (Lessons Log #5:
+# the on/off switch lives on the shape).
+@onready var attackShape: CollisionShape2D = $hitbox/CollisionShape2D
+
+var jumpVelocity = -450.0
 
 func _ready() -> void:
 	add_to_group("player")
-	screen_size = get_viewport_rect().size
+	
+	#Start with hitbox OFF (no free hits while walking around (right now))
+	#set_deferred bedcause we're in a physics-adjacent context
+	attackShape.set_deferred("disabled", true)
 
 func _physics_process(delta: float) -> void:
+	
+	# ---------- ATTACK START
+	#cooldown ticks down every frame, floored at 0
+	attackCooldown = max(0.0, attackCooldown - delta)
+	
+	#is_action_just_pressed fires ONCE per pressed 
+	# (instead of is_action_pressed which fires every frame held)
+	#the former is desired for a swing 
+	if Input.is_action_just_pressed("mainAttack") and attackCooldown == 0.0:
+		_mainAttack()
+	
+	# ---------- INPUT // MOVEMENT START
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jumpVelocity
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -45,3 +72,24 @@ func _physics_process(delta: float) -> void:
 	#position = position.clamp(Vector2.ZERO, (screen_size - Vector2(40, 40))) #the -20 will need to be adjusted later to account for different sprite size
 
 	move_and_slide()
+		# ---------- INPUT // MOVEMENT END
+
+func _mainAttack() -> void:
+	# 1. Start cooldown immediately, so this frame's press can't retrigger
+	attackCooldown = attackCooldownTime
+	
+	attackHitbox.damage = baseAttackDamage #add weapon augmentation here
+	# 2. Turn hitbox on. any enemy hurtbox overlapping it this instant will fire its own area_entered signal (and the enemy handles the rest)
+	# purpose of this method: this script never touches enemy health
+	attackShape.set_deferred("disabled", false)
+	# 3. Schedule the hitbox to turn off
+	#    A Timer node would also work; a pending call is one less node to wire.
+	#    0.15s is a short "active frames" window, like a real swing arc.
+	#    If you want faster feedback on hit timing, tune this number in the Inspector
+	#    by exporting it like the others.
+	await get_tree().create_timer(0.15).timeout
+	attackShape.set_deferred("disabled", true)
+	
+	
+	
+	

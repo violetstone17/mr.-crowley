@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dp0cjmrl8b0f1" path="res://assets/basicTileSet.tres" id="1_w1tr2"]
 [ext_resource type="PackedScene" uid="uid://cf82iijems8mo" path="res://scenes/player.tscn" id="2_35015"]
 [ext_resource type="PackedScene" uid="uid://bi7cnf77vddk7" path="res://scenes/door.tscn" id="3_35015"]
+[ext_resource type="PackedScene" uid="uid://b0aojr1olpe3u" path="res://scenes/dummy_enemy.tscn" id="4_8f742"]
 
 [node name="DungeonLayer" type="Node2D" unique_id=198205434]
 
@@ -31,3 +32,6 @@ scale = Vector2(0.1, 0.1)
 [node name="player" parent="." unique_id=902986622 instance=ExtResource("2_35015")]
 position = Vector2(38, 37)
 scale = Vector2(0.65, 0.65)
+
+[node name="dummyenemy" parent="." unique_id=356996311 instance=ExtResource("4_8f742")]
+position = Vector2(427, 181)
