@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b0aojr1olpe3u"]
+
+[ext_resource type="Script" uid="uid://dia1fb08qrs3r" path="res://scripts/dummy_enemy.gd" id="1_wpb4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p01cl"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x7t1"]
+size = Vector2(44, 44)
+
+[node name="dummyenemy" type="CharacterBody2D" unique_id=356996311]
+script = ExtResource("1_wpb4l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1876167392]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_p01cl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=3193030]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.73298246, 0, 0.09494672, 1)
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=874943602]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=109247418]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_4x7t1")
+debug_color = Color(0.8527846, 0.33244017, 0.4361885, 0.41960785)
