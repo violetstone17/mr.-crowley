@@ -19,6 +19,7 @@ var attackCooldown: float = 0.0 	#counts down to 0; 0 means 'can attack'
 var jumpVelocity = -450.0
 
 func _ready() -> void:
+	GameState.playerRef = self
 	add_to_group("player")
 	
 	#Start with hitbox OFF (no free hits while walking around (right now))

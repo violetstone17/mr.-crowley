@@ -20,7 +20,7 @@ func _ready() -> void:
 	add_to_group("enemy")
 	health = max_health
 	hurtbox.area_entered.connect(_onHurtboxAreaEntered)
-	
+
 
 func _process(delta: float) -> void:
 	print(name, " position: ", global_position)
@@ -36,5 +36,6 @@ func takeDamage(amount: int) -> void:
 		die()
 
 func die() -> void:
+	print(name, "has died!")
 	enemyDead.emit()
 	queue_free()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0aojr1olpe3u"]
 
-[ext_resource type="Script" uid="uid://dia1fb08qrs3r" path="res://scripts/dummy_enemy.gd" id="1_wpb4l"]
+[ext_resource type="Script" uid="uid://dia1fb08qrs3r" path="res://scripts/enemyScripts/dummy_enemy.gd" id="1_qea5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p01cl"]
 size = Vector2(40, 40)
@@ -9,7 +9,7 @@ size = Vector2(40, 40)
 size = Vector2(44, 44)
 
 [node name="dummyenemy" type="CharacterBody2D" unique_id=356996311]
-script = ExtResource("1_wpb4l")
+script = ExtResource("1_qea5b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1876167392]
 position = Vector2(20, 20)

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://hysvku473crl"]
+
+[ext_resource type="Script" uid="uid://cj21qnxfj2jvk" path="res://scripts/enemyScripts/bat.gd" id="1_vfwf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qea5b"]
+size = Vector2(8, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w600r"]
+radius = 40.012497
+
+[node name="bat" type="CharacterBody2D" unique_id=22917944 node_paths=PackedStringArray("detectionRange")]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_vfwf1")
+maxHealth = 20
+enemyStrength = 5
+detectionRange = NodePath("detectionRange")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438216556]
+shape = SubResource("RectangleShape2D_qea5b")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=931551806]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.732707e-06, 0.5790929, 0.33187288, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=569553119]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14285715
+anchor_top = 0.2
+anchor_right = 0.14285715
+anchor_bottom = 0.2
+offset_right = 26.0
+offset_bottom = 23.0
+scale = Vector2(0.08, 0.08)
+text = "bat"
+metadata/_edit_use_anchors_ = true
+
+[node name="detectionRange" type="Area2D" parent="." unique_id=894667194]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionRange" unique_id=558312022]
+shape = SubResource("CircleShape2D_w600r")
