@@ -4,16 +4,19 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var baseAttackDamage: int = 10
 @export var attackCooldownTime: float = 0.5 #seconds between swings
+@export var health: int = 100
+@export var iframeDuration: float = 5
 
 # --- STATE
 var attackCooldown: float = 0.0 	#counts down to 0; 0 means 'can attack'
+var iframes: float
 
 # --- NODE REFERENCES
 # the hitbox Area2D that sits infront of the player
-@onready var attackHitbox: Area2D = $hitbox
-
-# The hitbox's shape. We disable/enable the SHAPE, never the Area (Lessons Log #5:
-# the on/off switch lives on the shape).
+@onready var hitbox: Area2D = $hitbox
+@onready var hurtbox: Area2D = $hurtbox
+	# The hitbox's shape. We disable/enable the SHAPE, never the Area (Lessons Log #5:
+	# the on/off switch lives on the shape).
 @onready var attackShape: CollisionShape2D = $hitbox/CollisionShape2D
 
 var jumpVelocity = -450.0
@@ -25,12 +28,15 @@ func _ready() -> void:
 	#Start with hitbox OFF (no free hits while walking around (right now))
 	#set_deferred bedcause we're in a physics-adjacent context
 	attackShape.set_deferred("disabled", true)
+	
+	hurtbox.area_entered.connect(_onHurtboxAreaEntered)
 
 func _physics_process(delta: float) -> void:
 	
 	# ---------- ATTACK START
 	#cooldown ticks down every frame, floored at 0
 	attackCooldown = max(0.0, attackCooldown - delta)
+	iframes = max(0.0, iframes - delta)
 	
 	#is_action_just_pressed fires ONCE per pressed 
 	# (instead of is_action_pressed which fires every frame held)
@@ -79,7 +85,7 @@ func _mainAttack() -> void:
 	# 1. Start cooldown immediately, so this frame's press can't retrigger
 	attackCooldown = attackCooldownTime
 	
-	attackHitbox.damage = baseAttackDamage #add weapon augmentation here
+	hitbox.damage = baseAttackDamage #add weapon augmentation here
 	# 2. Turn hitbox on. any enemy hurtbox overlapping it this instant will fire its own area_entered signal (and the enemy handles the rest)
 	# purpose of this method: this script never touches enemy health
 	attackShape.set_deferred("disabled", false)
@@ -90,7 +96,23 @@ func _mainAttack() -> void:
 	#    by exporting it like the others.
 	await get_tree().create_timer(0.15).timeout
 	attackShape.set_deferred("disabled", true)
-	
-	
-	
-	
+
+func _onHurtboxAreaEntered(area: Area2D) -> void:
+	print("PLAYER hurtbox sees: ", area.name)
+	# <- does this signal fire?
+	if "damage" in area:
+		print("player is damaged: ", area.damage)
+		takeDamage(area.damage)
+
+func takeDamage(amount: int) -> void:
+	if iframes > 0.0:
+		return
+	iframes = iframeDuration
+	health -= amount
+	print(name, " took ", amount, " damage. Health: ", health)
+	if health <= 0:
+		die()
+
+func die() -> void:
+	print(name, " has died!")
+	queue_free()

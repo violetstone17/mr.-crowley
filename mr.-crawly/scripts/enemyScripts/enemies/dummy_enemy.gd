@@ -9,6 +9,7 @@ signal enemyDead
 # --- STATE
 var health: float
 
+
 # --- NODE REFERENCES
 # The hurtbox: an Area2D covering the enemy's body. It doesn't attack anything —
 # it exists to be overlapped BY hitboxes and to report that fact.
@@ -21,9 +22,8 @@ func _ready() -> void:
 	health = max_health
 	hurtbox.area_entered.connect(_onHurtboxAreaEntered)
 
-
 func _process(delta: float) -> void:
-	print(name, " position: ", global_position)
+	pass
 
 func _onHurtboxAreaEntered(area: Area2D) -> void:
 	if "damage" in area:

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://hysvku473crl"]
 
-[ext_resource type="Script" uid="uid://cj21qnxfj2jvk" path="res://scripts/enemyScripts/bat.gd" id="1_vfwf1"]
+[ext_resource type="Script" uid="uid://cj21qnxfj2jvk" path="res://scripts/enemyScripts/enemies/bat.gd" id="1_vfwf1"]
+[ext_resource type="Script" uid="uid://b6m7nf6ypdbdo" path="res://scripts/enemyScripts/enemyHitbox.gd" id="2_ahuk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qea5b"]
 size = Vector2(8, 6)
@@ -8,13 +9,21 @@ size = Vector2(8, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_w600r"]
 radius = 40.012497
 
-[node name="bat" type="CharacterBody2D" unique_id=22917944 node_paths=PackedStringArray("detectionRange")]
-collision_layer = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p01cl"]
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w600r"]
+size = Vector2(10, 8.444445)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p01cl"]
+radius = 7.0
+
+[node name="bat" type="CharacterBody2D" unique_id=22917944]
+collision_layer = 64
 motion_mode = 1
 script = ExtResource("1_vfwf1")
 maxHealth = 20
 enemyStrength = 5
-detectionRange = NodePath("detectionRange")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438216556]
 shape = SubResource("RectangleShape2D_qea5b")
@@ -46,9 +55,34 @@ scale = Vector2(0.08, 0.08)
 text = "bat"
 metadata/_edit_use_anchors_ = true
 
-[node name="detectionRange" type="Area2D" parent="." unique_id=894667194]
-collision_layer = 4
-collision_mask = 3
+[node name="detectionBox" type="Area2D" parent="." unique_id=894667194]
+collision_layer = 0
+collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionRange" unique_id=558312022]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionBox" unique_id=558312022]
 shape = SubResource("CircleShape2D_w600r")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=654390672]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=647071955]
+shape = SubResource("RectangleShape2D_p01cl")
+debug_color = Color(0.53204435, 0.41242328, 1, 0.41960785)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1408489893]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("2_ahuk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1511659586]
+scale = Vector2(0.9, 0.8)
+shape = SubResource("RectangleShape2D_w600r")
+debug_color = Color(0.9158945, 0.20999351, 0.5051533, 0.41960785)
+
+[node name="attackRange" type="Area2D" parent="." unique_id=875451667]
+collision_layer = 0
+collision_mask = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackRange" unique_id=1522064390]
+shape = SubResource("CircleShape2D_p01cl")
