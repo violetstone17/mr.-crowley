@@ -7,7 +7,7 @@
 size = Vector2(8, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w600r"]
-radius = 40.012497
+radius = 74.54193
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p01cl"]
 size = Vector2(10, 8)
@@ -18,7 +18,11 @@ size = Vector2(10, 8.444445)
 [sub_resource type="CircleShape2D" id="CircleShape2D_p01cl"]
 radius = 7.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x7t1"]
+size = Vector2(4.5, 7)
+
 [node name="bat" type="CharacterBody2D" unique_id=22917944]
+scale = Vector2(2, 2)
 collision_layer = 64
 motion_mode = 1
 script = ExtResource("1_vfwf1")
@@ -86,3 +90,11 @@ collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackRange" unique_id=1522064390]
 shape = SubResource("CircleShape2D_p01cl")
+
+[node name="batSelfCollision" type="Area2D" parent="." unique_id=1049483374]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="batSelfCollision" unique_id=252824571]
+position = Vector2(-2.25, 0)
+shape = SubResource("RectangleShape2D_4x7t1")

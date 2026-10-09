@@ -38,9 +38,10 @@ scale = Vector2(0.65, 0.65)
 position = Vector2(427, 181)
 
 [node name="bat" parent="." unique_id=22917944 instance=ExtResource("5_5kepm")]
-position = Vector2(714, 399)
-scale = Vector2(4, 4)
+position = Vector2(457, 55)
 
 [node name="bat2" parent="." unique_id=458026080 instance=ExtResource("5_5kepm")]
 position = Vector2(443, 71)
-scale = Vector2(3, 3)
+
+[node name="bat3" parent="." unique_id=336178983 instance=ExtResource("5_5kepm")]
+position = Vector2(466, 81)

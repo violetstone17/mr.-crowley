@@ -98,7 +98,7 @@ func _mainAttack() -> void:
 	attackShape.set_deferred("disabled", true)
 
 func _onHurtboxAreaEntered(area: Area2D) -> void:
-	print("PLAYER hurtbox sees: ", area.name)
+	#print("PLAYER hurtbox sees: ", area.name)
 	# <- does this signal fire?
 	if "damage" in area:
 		print("player is damaged: ", area.damage)

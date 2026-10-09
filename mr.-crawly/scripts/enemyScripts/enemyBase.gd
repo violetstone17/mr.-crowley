@@ -47,13 +47,13 @@ func _process(delta: float) -> void:
 		chase()
 		#print(playerInRange)
 		if playerInRange and attackCooldown == 0.0:
-			print("in attack range")
+			#print("in attack range")
 			attack()
 	else:
 		pass
 
 func _onAttackRangeEntered(b: Node2D) -> void:
-	print(b, " has entered range")
+	#print(b, " has entered range")
 	if b.is_in_group("player"):
 		playerInRange = true
 
@@ -90,15 +90,15 @@ func attack() -> void:
 	
 	attackCooldown = attackCooldownTime
 	hitbox.damage = enemyStrength
-	print("BAT SWING: shape enabled, damage = ", hitbox.damage)
+	#dprint("BAT SWING: shape enabled, damage = ", hitbox.damage)
 	attackShape.set_deferred("disabled", false)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
-	for a in hitbox.get_overlapping_areas():
-		print("overlapping: ", a.get_parent().name, "/", a.name)
-	print("shape disabled: ", attackShape.disabled,
-	" | monitorable: ", hitbox.monitorable,
-	" | overlapping: ", hitbox.get_overlapping_areas())
+	#for a in hitbox.get_overlapping_areas():
+		#print("overlapping: ", a.get_parent().name, "/", a.name)
+	#print("shape disabled: ", attackShape.disabled,
+	#" | monitorable: ", hitbox.monitorable,
+	#" | overlapping: ", hitbox.get_overlapping_areas())
 	await get_tree().create_timer(0.15).timeout
 	attackShape.set_deferred("disabled", true)
 

@@ -9,6 +9,8 @@ size = Vector2(40, 40)
 size = Vector2(44, 44)
 
 [node name="dummyenemy" type="CharacterBody2D" unique_id=356996311]
+collision_layer = 64
+collision_mask = 33
 script = ExtResource("1_qea5b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1876167392]
@@ -22,7 +24,7 @@ color = Color(0.73298246, 0, 0.09494672, 1)
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=874943602]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=109247418]
 position = Vector2(20, 20)
