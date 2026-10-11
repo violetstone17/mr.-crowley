@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cf82iijems8mo"]
 
 [ext_resource type="Script" uid="uid://ibsragkvrd53" path="res://scripts/playerScripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://c7bdfhjm3omk0" path="res://scripts/playerHitbox.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://c7bdfhjm3omk0" path="res://scripts/playerScripts/playerHitbox.gd" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w600r"]
 size = Vector2(40, 40)
@@ -14,9 +14,8 @@ size = Vector2(40, 40)
 
 [node name="player" type="CharacterBody2D" unique_id=902986622]
 collision_layer = 32
-collision_mask = 65
 script = ExtResource("1_3vyb7")
-health = 10
+health = 100000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=250806966]
 position = Vector2(20, 20)
@@ -33,7 +32,8 @@ position_smoothing_enabled = true
 
 [node name="hitbox" type="Area2D" parent="." unique_id=442933771]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 0
+monitoring = false
 script = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=887325072]

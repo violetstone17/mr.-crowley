@@ -18,13 +18,14 @@ tile_set = ExtResource("1_hpvv5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1344824776]
 visible = false
-collision_mask = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1097943523]
 position = Vector2(160, 160)
 shape = SubResource("RectangleShape2D_w600r")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1610544103]
+collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2142554718]

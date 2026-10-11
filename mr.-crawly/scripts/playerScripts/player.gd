@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var baseAttackDamage: int = 10
 @export var attackCooldownTime: float = 0.5 #seconds between swings
 @export var health: int = 100
-@export var iframeDuration: float = 5
+@export var iframeDuration: float = 0.5
 
 # --- STATE
 var attackCooldown: float = 0.0 	#counts down to 0; 0 means 'can attack'

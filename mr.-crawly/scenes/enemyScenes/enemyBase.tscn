@@ -1,35 +1,58 @@
 [gd_scene format=3 uid="uid://bfmcf4fvqwjfh"]
 
 [ext_resource type="Script" uid="uid://b1vrn0c40lin0" path="res://scripts/enemyScripts/enemyBase.gd" id="1_x26w2"]
+[ext_resource type="Script" uid="uid://b6m7nf6ypdbdo" path="res://scripts/enemyScripts/enemyHitbox.gd" id="2_khh3r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x26w2"]
-size = Vector2(26, 26)
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2w87"]
+size = Vector2(44, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65c10"]
+size = Vector2(40, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2f2yh"]
-radius = 32.01562
+radius = 82.05486
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w600r"]
-radius = 19.0
+radius = 32.0
 
 [node name="enemyBase" type="CharacterBody2D" unique_id=2016341882]
 collision_layer = 64
 script = ExtResource("1_x26w2")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1477595141]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+color = Color(0.61294425, 0.4002184, 0, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=39825983]
+visible = false
 shape = SubResource("RectangleShape2D_x26w2")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1066195651]
+visible = false
 collision_layer = 16
-collision_mask = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_khh3r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=291556913]
 shape = SubResource("RectangleShape2D_v2w87")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=1024307368]
+visible = false
 collision_layer = 2
 collision_mask = 0
 
@@ -37,6 +60,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_65c10")
 
 [node name="detectionBox" type="Area2D" parent="." unique_id=981526474]
+visible = false
 collision_layer = 0
 collision_mask = 32
 
@@ -44,6 +68,7 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_2f2yh")
 
 [node name="attackRange" type="Area2D" parent="." unique_id=1597080338]
+visible = false
 collision_layer = 0
 collision_mask = 32
 

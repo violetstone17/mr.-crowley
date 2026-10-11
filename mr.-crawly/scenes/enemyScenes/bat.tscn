@@ -76,7 +76,8 @@ debug_color = Color(0.53204435, 0.41242328, 1, 0.41960785)
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1408489893]
 collision_layer = 16
-collision_mask = 8
+collision_mask = 0
+monitoring = false
 script = ExtResource("2_ahuk6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1511659586]
@@ -86,14 +87,14 @@ debug_color = Color(0.9158945, 0.20999351, 0.5051533, 0.41960785)
 
 [node name="attackRange" type="Area2D" parent="." unique_id=875451667]
 collision_layer = 0
-collision_mask = 40
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackRange" unique_id=1522064390]
 shape = SubResource("CircleShape2D_p01cl")
 
 [node name="batSelfCollision" type="Area2D" parent="." unique_id=1049483374]
-collision_layer = 64
-collision_mask = 64
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="batSelfCollision" unique_id=252824571]
 position = Vector2(-2.25, 0)

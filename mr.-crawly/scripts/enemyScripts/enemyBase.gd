@@ -24,6 +24,8 @@ var attackCooldown: float
 var player: Node2D = null
 var playerInRange: bool = false
 
+enum State { RISE, PATROL, CHASE, ATTACK, HURT, DEAD }
+var state: State = State.PATROL
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,6 +44,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	attackCooldown = max(0.0, attackCooldown - delta)
+	_updateBehavior(delta)
+
+func _updateBehavior(d: float) -> void:
 	if player:
 		#print("chasing player")
 		chase()
@@ -49,8 +54,11 @@ func _process(delta: float) -> void:
 		if playerInRange and attackCooldown == 0.0:
 			#print("in attack range")
 			attack()
-	else:
-		pass
+	
+func changeState(newState: State) -> void:
+	if state == newState:
+		return
+	state = newState
 
 func _onAttackRangeEntered(b: Node2D) -> void:
 	#print(b, " has entered range")
@@ -62,6 +70,8 @@ func _onAttackRangeExited(b: Node2D) -> void:
 		playerInRange = false
 
 func _onHurtboxAreaEntered(area: Node2D) -> void:
+	print(name, " hurtbox touched by ", area.name, " | has damage: ", "damage" in area)
+
 	if "damage" in area:
 		takeDamage(area.damage)
 
@@ -87,7 +97,6 @@ func attack() -> void:
 	##    by exporting it like the others.
 	#await get_tree().create_timer(0.15).timeout
 	#attackShape.set_deferred("disabled", true)
-	
 	attackCooldown = attackCooldownTime
 	hitbox.damage = enemyStrength
 	#dprint("BAT SWING: shape enabled, damage = ", hitbox.damage)
@@ -112,6 +121,9 @@ func chase():
 
 #universal take damage function
 func takeDamage(amount: int) -> void:
+	print(name, " takeDamage called, state = ", state)
+	if state == State.RISE or state == State.DEAD:
+		return #invulnerable while rising and dead
 	currentHealth -= amount
 	print(name, " took ", amount, " damage. Health: ", currentHealth)
 	if currentHealth <= 0:

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bsq74d40nqxn"]
+
+[ext_resource type="PackedScene" uid="uid://bfmcf4fvqwjfh" path="res://scenes/enemyScenes/enemyBase.tscn" id="1_xg6vg"]
+[ext_resource type="Script" uid="uid://boy35y6wlvx5m" path="res://scripts/enemyScripts/enemies/skeleton.gd" id="2_4fyxr"]
+
+[node name="skeleton" unique_id=2016341882 instance=ExtResource("1_xg6vg")]
+script = ExtResource("2_4fyxr")
+riseTime = 1.0
+
+[node name="ColorRect" parent="." index="0" unique_id=1477595141]
+color = Color(0.69897354, 0.29908425, 0.37881786, 1)
+
+[node name="hurtbox" parent="." index="3" unique_id=1024307368]
+collision_mask = 4
