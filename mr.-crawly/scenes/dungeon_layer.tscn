@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsq74d40nqxn" path="res://scenes/enemyScenes/skeleton.tscn" id="3_nhw2d"]
 [ext_resource type="PackedScene" uid="uid://b0aojr1olpe3u" path="res://scenes/enemyScenes/dummy_enemy.tscn" id="4_8f742"]
 [ext_resource type="PackedScene" uid="uid://hysvku473crl" path="res://scenes/enemyScenes/bat.tscn" id="5_5kepm"]
+[ext_resource type="PackedScene" uid="uid://v3rgsyttn0qj" path="res://scenes/enemyScenes/bonkMan.tscn" id="7_1mghq"]
 
 [node name="DungeonLayer" type="Node2D" unique_id=198205434]
 
@@ -52,3 +53,7 @@ position = Vector2(460, 78)
 [node name="skeleton" parent="." unique_id=2009162983 instance=ExtResource("3_nhw2d")]
 position = Vector2(171, 396)
 speed = 50.0
+
+[node name="bonkMan" parent="." unique_id=810643553 instance=ExtResource("7_1mghq")]
+position = Vector2(1358, 490)
+scale = Vector2(2, 2)

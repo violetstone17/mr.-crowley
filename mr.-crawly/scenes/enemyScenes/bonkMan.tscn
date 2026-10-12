@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://v3rgsyttn0qj"]
+
+[ext_resource type="PackedScene" uid="uid://bfmcf4fvqwjfh" path="res://scenes/enemyScenes/enemyBase.tscn" id="1_05u3m"]
+[ext_resource type="Texture2D" uid="uid://dar6a36rcxley" path="res://assets/graybox game/bonkMan.png" id="2_6ggdy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fyxr"]
+radius = 20.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8dd65"]
+radius = 22.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_05u3m"]
+radius = 198.20444
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ggdy"]
+radius = 34.058773
+
+[node name="bonkMan" unique_id=2016341882 instance=ExtResource("1_05u3m")]
+maxHealth = 50
+enemyStrength = 15
+attackCooldownTime = 0.8
+
+[node name="ColorRect" parent="." index="0" unique_id=1477595141]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=39825983]
+shape = SubResource("CapsuleShape2D_4fyxr")
+
+[node name="CollisionShape2D" parent="hurtbox" parent_id_path=PackedInt32Array(1024307368) index="0" unique_id=1388397616]
+shape = SubResource("CapsuleShape2D_8dd65")
+
+[node name="CollisionShape2D" parent="detectionBox" parent_id_path=PackedInt32Array(981526474) index="0" unique_id=1474507344]
+shape = SubResource("CircleShape2D_05u3m")
+
+[node name="CollisionShape2D" parent="attackRange" parent_id_path=PackedInt32Array(1597080338) index="0" unique_id=644022980]
+shape = SubResource("CircleShape2D_6ggdy")
+
+[node name="BonkMan" type="Sprite2D" parent="." index="6" unique_id=104998622]
+position = Vector2(-1, -9)
+texture = ExtResource("2_6ggdy")
