@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bfmcf4fvqwjfh" path="res://scenes/enemyScenes/enemyBase.tscn" id="1_05u3m"]
 [ext_resource type="Texture2D" uid="uid://dar6a36rcxley" path="res://assets/graybox game/bonkMan.png" id="2_6ggdy"]
+[ext_resource type="Script" uid="uid://dupwawl5crdpn" path="res://scripts/enemyScripts/enemies/bonkMan.gd" id="2_8dd65"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fyxr"]
 radius = 20.0
@@ -18,9 +19,9 @@ radius = 198.20444
 radius = 34.058773
 
 [node name="bonkMan" unique_id=2016341882 instance=ExtResource("1_05u3m")]
-maxHealth = 50
-enemyStrength = 15
-attackCooldownTime = 0.8
+script = ExtResource("2_8dd65")
+windupTime = 0.7
+recoverTime = 1.0
 
 [node name="ColorRect" parent="." index="0" unique_id=1477595141]
 visible = false

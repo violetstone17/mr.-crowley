@@ -10,6 +10,7 @@ size = Vector2(320, 320)
 size = Vector2(325, 324)
 
 [node name="door" type="Node2D" unique_id=604020864]
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_uvdjg")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1738595022]
@@ -29,5 +30,5 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2142554718]
-position = Vector2(160.5, 160)
+position = Vector2(159.99998, 160)
 shape = SubResource("RectangleShape2D_p01cl")

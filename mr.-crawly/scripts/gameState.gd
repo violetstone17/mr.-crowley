@@ -6,7 +6,7 @@ var playerRef: Node2D = null
 
 #Run state
 var coins: int = 0
-var hasDungeonKey: bool = true
+var hasDungeonKey: bool = false
 var dungeonCleared: bool = false
 
 

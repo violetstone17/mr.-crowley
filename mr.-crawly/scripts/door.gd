@@ -9,7 +9,7 @@ func _ready() -> void:
 	detector.body_entered.connect(checkDoor)
 
 func checkDoor(b: Node2D) -> void:
-	if b.is_in_group("player") and GameState.hasDungeonKey:
+	if b.is_in_group("player"):
 		open()
 
 func open() -> void:

@@ -24,7 +24,7 @@ var attackCooldown: float
 var player: Node2D = null
 var playerInRange: bool = false
 
-enum State { RISE, PATROL, CHASE, ATTACK, HURT, DEAD }
+enum State { RISE, PATROL, CHASE, ATTACK, HURT, DEAD, WINDUP, RECOVER }
 var state: State = State.PATROL
 
 
