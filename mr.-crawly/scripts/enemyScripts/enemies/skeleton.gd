@@ -1,11 +1,13 @@
 extends EnemyBase
 
-@export var riseTime: float = 1.0
+@export var riseTime: float = 3.0
 
 func _ready() -> void:
 	super()
 	state = State.RISE
 	_startRise()
+
+
 
 func _startRise() -> void:
 	# graybox visual: swap "$Sprite" for your actual node
