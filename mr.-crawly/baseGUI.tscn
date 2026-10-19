@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://04en5jukf3h3"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1248918659]
+
+[node name="Control" type="Control" parent="." unique_id=1714646861]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Control" unique_id=817450577]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+offset_right = 63.0
+grow_vertical = 0
+dragging_enabled = false
+
+[node name="Label" type="Label" parent="Control/VSplitContainer" unique_id=191683197]
+layout_mode = 2
+text = "Coins:
+"
+
+[node name="Label2" type="Label" parent="Control/VSplitContainer" unique_id=550346506]
+layout_mode = 2
+text = "Health: "
