@@ -23,8 +23,9 @@ var jumpVelocity = -450.0
 
 func _ready() -> void:
 	GameState.playerRef = self
-	GameState.currentHealth = health
 	GameState.maxHealth = health
+	GameState.currentHealth = health
+	
 	add_to_group("player")
 	
 	#Start with hitbox OFF (no free hits while walking around (right now))
