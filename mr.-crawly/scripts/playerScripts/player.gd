@@ -23,6 +23,8 @@ var jumpVelocity = -450.0
 
 func _ready() -> void:
 	GameState.playerRef = self
+	GameState.currentHealth = health
+	GameState.maxHealth = health
 	add_to_group("player")
 	
 	#Start with hitbox OFF (no free hits while walking around (right now))
@@ -109,6 +111,7 @@ func takeDamage(amount: int) -> void:
 		return
 	iframes = iframeDuration
 	health -= amount
+	GameState.currentHealth = health
 	print(name, " took ", amount, " damage. Health: ", health)
 	if health <= 0:
 		die()

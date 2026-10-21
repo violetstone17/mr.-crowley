@@ -1,7 +1,7 @@
 extends Node
 
 signal coinsChanged(newAmount)
-
+signal healthChanged(newAmount)
 
 
 #for player tracking/ position data
@@ -12,6 +12,13 @@ var coins: int = 0:
 	set(value):
 		coins = value
 		coinsChanged.emit(coins)
+
+var maxHealth: int = 0
+
+var currentHealth: int = 0:
+	set(value):
+		currentHealth = value
+		healthChanged.emit()
 
 var hasDungeonKey: bool = false
 var dungeonCleared: bool = false
