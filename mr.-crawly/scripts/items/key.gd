@@ -9,7 +9,7 @@ func _ready() -> void:
 	detectionShape.set_deferred('disabled', true)
 	detector.body_entered.connect(checkKey)
 	print("timer going...")
-	await get_tree().create_timer(5.0)
+	await get_tree().create_timer(5.0).timeout
 	print("timer done!")
 	detectionShape.set_deferred('disabled', false)
 

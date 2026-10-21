@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	
 
 func healthChanged(newAmount):
-	healthLabel.text = healthFormat.format([[newAmount], [GameState.maxHealth]])
+	healthLabel.text = healthFormat.format([newAmount, GameState.maxHealth])
 
 func coinUpdate(newAmount):
 	coinLabel.text = str("Coins: ", newAmount)
