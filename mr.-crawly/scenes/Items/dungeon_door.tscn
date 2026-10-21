@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6uqh6cniydtn"]
 
-[ext_resource type="PackedScene" uid="uid://bi7cnf77vddk7" path="res://scenes/door.tscn" id="1_fa7cw"]
+[ext_resource type="PackedScene" uid="uid://bi7cnf77vddk7" path="res://scenes/Items/door.tscn" id="1_fa7cw"]
 [ext_resource type="Script" uid="uid://blnws6t7xhu7w" path="res://scripts/dungeonDoor.gd" id="2_oyg5a"]
 
 [node name="dungeonDoor" unique_id=604020864 instance=ExtResource("1_fa7cw")]

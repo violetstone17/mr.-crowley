@@ -2,12 +2,12 @@
 
 [ext_resource type="TileSet" uid="uid://dp0cjmrl8b0f1" path="res://assets/basicTileSet.tres" id="1_w1tr2"]
 [ext_resource type="PackedScene" uid="uid://cf82iijems8mo" path="res://scenes/player.tscn" id="2_35015"]
-[ext_resource type="PackedScene" uid="uid://bi7cnf77vddk7" path="res://scenes/door.tscn" id="3_35015"]
+[ext_resource type="PackedScene" uid="uid://bi7cnf77vddk7" path="res://scenes/Items/door.tscn" id="3_35015"]
 [ext_resource type="PackedScene" uid="uid://bsq74d40nqxn" path="res://scenes/enemyScenes/skeleton.tscn" id="3_nhw2d"]
 [ext_resource type="PackedScene" uid="uid://b0aojr1olpe3u" path="res://scenes/enemyScenes/dummy_enemy.tscn" id="4_8f742"]
 [ext_resource type="PackedScene" uid="uid://hysvku473crl" path="res://scenes/enemyScenes/bat.tscn" id="5_5kepm"]
 [ext_resource type="PackedScene" uid="uid://v3rgsyttn0qj" path="res://scenes/enemyScenes/bonkMan.tscn" id="7_1mghq"]
-[ext_resource type="PackedScene" uid="uid://c6uqh6cniydtn" path="res://scenes/dungeon_door.tscn" id="8_n7esk"]
+[ext_resource type="PackedScene" uid="uid://c6uqh6cniydtn" path="res://scenes/Items/dungeon_door.tscn" id="8_n7esk"]
 
 [node name="DungeonLayer" type="Node2D" unique_id=198205434]
 
