@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://dp0cjmrl8b0f1" path="res://assets/basicTileSet.tres" id="1_2oguh"]
 [ext_resource type="PackedScene" uid="uid://cf82iijems8mo" path="res://scenes/player.tscn" id="2_dr8st"]
+[ext_resource type="PackedScene" uid="uid://04en5jukf3h3" path="res://scenes/UI/HUD.tscn" id="3_64qo7"]
 
 [node name="Cantina" type="Node2D" unique_id=1154526805]
 
@@ -15,3 +16,5 @@ position = Vector2(483, 99)
 [node name="player" parent="PlayerSpawn" unique_id=902986622 instance=ExtResource("2_dr8st")]
 position = Vector2(-18, -15)
 scale = Vector2(0.75, 0.75)
+
+[node name="HUD" parent="." unique_id=1248918659 instance=ExtResource("3_64qo7")]

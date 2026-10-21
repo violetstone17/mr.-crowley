@@ -19,9 +19,7 @@ size_flags_vertical = 0
 [node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1901886391]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Health"
 
 [node name="CoinLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1521140091]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Coins"

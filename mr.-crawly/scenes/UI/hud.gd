@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 
 
 func coinUpdate():
-	pass
+	coinLabel.text = str("Coins: ", GameState.coins)
