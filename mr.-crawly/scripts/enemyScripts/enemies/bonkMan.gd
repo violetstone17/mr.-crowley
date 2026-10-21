@@ -1,6 +1,6 @@
 extends EnemyBase
 
-const KEY_SCENE := preload("res://scenes/key.tscn")
+const KEY_SCENE := preload("res://scenes/Items/key.tscn")
 
 @export var windupTime: float = 0.7
 @export var recoverTime: float = 1.0

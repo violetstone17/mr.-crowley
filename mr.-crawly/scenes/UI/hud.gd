@@ -8,7 +8,7 @@ var coinsFormat: String = "Coins: {0}"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	coinLabel.text = coinsFormat.format([GameState.coins])
-	healthLabel.text = healthFormat.format([[GameState.currentHealth], [GameState.maxHealth]])
+	healthLabel.text = healthFormat.format([GameState.currentHealth, GameState.maxHealth])
 	GameState.coinsChanged.connect(coinUpdate)
 	GameState.healthChanged.connect(healthChanged)
 	GameState.coins += 10

@@ -18,7 +18,7 @@ var maxHealth: int = 0
 var currentHealth: int = 0:
 	set(value):
 		currentHealth = value
-		healthChanged.emit()
+		healthChanged.emit(currentHealth)
 
 var hasDungeonKey: bool = false
 var dungeonCleared: bool = false
