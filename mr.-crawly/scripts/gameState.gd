@@ -1,11 +1,18 @@
 extends Node
 
+signal coinsChanged(newAmount)
+
+
 
 #for player tracking/ position data
 var playerRef: Node2D = null
 
 #Run state
-var coins: int = 0
+var coins: int = 0:
+	set(value):
+		coins = value
+		coinsChanged.emit(coins)
+
 var hasDungeonKey: bool = false
 var dungeonCleared: bool = false
 
