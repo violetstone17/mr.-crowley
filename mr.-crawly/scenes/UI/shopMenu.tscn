@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://55l26n0ue5bj"]
+
+[ext_resource type="Script" uid="uid://d1uo27tjcn4ou" path="res://scripts/UI/shopMenu.gd" id="1_nw4gr"]
+
+[node name="ShopMenu" type="CanvasLayer" unique_id=1018107767]
+process_mode = 3
+script = ExtResource("1_nw4gr")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=430387639]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1687597854]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1084522409]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1229367374]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=831641843]
+layout_mode = 2
+text = "Upgrades"
+
+[node name="HealthInfo" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1460473230]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BuyHealthButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=504738684]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1804621612]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"

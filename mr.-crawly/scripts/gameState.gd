@@ -1,5 +1,6 @@
 extends Node
 
+
 signal coinsChanged(newAmount)
 signal healthChanged(newAmount)
 
@@ -24,5 +25,23 @@ var hasDungeonKey: bool = false
 var dungeonCleared: bool = false
 
 
-#upgrade levels (cantina purchases)
+# ---- SHOP UPGRADES/ LOGIC BELOW ----
+
+signal upgradesChanged
+
+const HEALTH_UPGRADE_BASE_COST := 50
+const HEALTH_PER_LEVEL := 20
+
 var upgradeHealth: int = 0
+
+func getHealthUpgradeCost() -> int:
+	return HEALTH_UPGRADE_BASE_COST * (upgradeHealth + 1)
+
+func tryBuyHealthUpgrade() -> bool:
+	var cost := getHealthUpgradeCost()
+	if coins < cost:
+		return false
+	coins -= cost
+	upgradeHealth += 1
+	upgradesChanged.emit()
+	return true

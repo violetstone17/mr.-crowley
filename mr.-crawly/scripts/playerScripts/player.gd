@@ -23,6 +23,7 @@ var jumpVelocity = -450.0
 
 func _ready() -> void:
 	GameState.playerRef = self
+	health += GameState.upgradeHealth * GameState.HEALTH_PER_LEVEL
 	GameState.maxHealth = health
 	GameState.currentHealth = health
 	
