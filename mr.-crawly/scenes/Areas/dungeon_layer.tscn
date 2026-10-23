@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://04en5jukf3h3" path="res://scenes/UI/HUD.tscn" id="9_2pr58"]
 [ext_resource type="Script" uid="uid://d0dh64g3cwxii" path="res://scripts/items/door.gd" id="9_yftn8"]
 [ext_resource type="PackedScene" uid="uid://bn1wa2qlufcgs" path="res://scenes/Items/levelReturn.tscn" id="10_p8pel"]
-[ext_resource type="PackedScene" path="res://scenes/Areas/cantina.tscn" id="11_0tisj"]
+[ext_resource type="PackedScene" uid="uid://d0c3cr26ugvj2" path="res://scenes/Areas/cantina.tscn" id="11_0tisj"]
 
 [node name="DungeonLayer" type="Node2D" unique_id=198205434]
 
