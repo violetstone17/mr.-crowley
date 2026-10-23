@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cf82iijems8mo" path="res://scenes/player.tscn" id="2_dr8st"]
 [ext_resource type="PackedScene" uid="uid://04en5jukf3h3" path="res://scenes/UI/HUD.tscn" id="3_64qo7"]
 [ext_resource type="PackedScene" uid="uid://55l26n0ue5bj" path="res://scenes/UI/shopMenu.tscn" id="3_gf0e1"]
+[ext_resource type="Script" uid="uid://bre18r65rqlld" path="res://scripts/UI/shopCounter.gd" id="5_yvio2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igtx2"]
+size = Vector2(68.5, 99.5)
 
 [node name="Cantina" type="Node2D" unique_id=1154526805]
 
@@ -21,3 +25,25 @@ scale = Vector2(0.75, 0.75)
 [node name="ShopMenu" parent="." unique_id=1018107767 instance=ExtResource("3_gf0e1")]
 
 [node name="HUD" parent="." unique_id=1248918659 instance=ExtResource("3_64qo7")]
+
+[node name="ShopCounter" type="Area2D" parent="." unique_id=1566376937]
+position = Vector2(66, 142)
+collision_mask = 32
+script = ExtResource("5_yvio2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopCounter" unique_id=1962935237]
+shape = SubResource("RectangleShape2D_igtx2")
+
+[node name="ColorRect" type="ColorRect" parent="ShopCounter" unique_id=868400571]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -50.0
+offset_right = 34.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.41568628, 0.2627451, 0.61960787, 0.72156864)

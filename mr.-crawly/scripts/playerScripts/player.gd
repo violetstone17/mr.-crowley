@@ -34,6 +34,9 @@ func _ready() -> void:
 	attackShape.set_deferred("disabled", true)
 	
 	hurtbox.area_entered.connect(_onHurtboxAreaEntered)
+	
+	print("upgradeHealth: ", GameState.upgradeHealth, "  health: ", health)
+	GameState.upgradesChanged.connect(onUpgradesChanged)
 
 func _physics_process(delta: float) -> void:
 	
@@ -107,6 +110,11 @@ func _onHurtboxAreaEntered(area: Area2D) -> void:
 	if "damage" in area:
 		print("player is damaged: ", area.damage)
 		takeDamage(area.damage)
+
+func onUpgradesChanged() -> void:
+	health += GameState.HEALTH_PER_LEVEL
+	GameState.maxHealth = health
+	GameState.currentHealth = health
 
 func takeDamage(amount: int) -> void:
 	if iframes > 0.0:
