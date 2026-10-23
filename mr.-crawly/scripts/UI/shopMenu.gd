@@ -14,7 +14,9 @@ func _ready() -> void:
 
 func refresh(_unused = null) -> void:
 	var cost = GameState.getHealthUpgradeCost()
-	infoLabel.text = "Max Health Lv {0} (+{1} per level)".format([GameState.upgradeHealth, GameState.HEALTH_PER_LEVEL])
+	var level = GameState.upgradeHealth
+	var gain = GameState.getHealthBonus(level + 1) - GameState.getHealthBonus(level)
+	infoLabel.text = "Max Health Lv {0} (+{1} per level)".format([level, gain])
 	buyButton.text = "Buy: {0} coins".format([cost])
 	buyButton.disabled = GameState.coins < cost
 	

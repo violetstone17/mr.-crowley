@@ -10,6 +10,7 @@ extends CharacterBody2D
 # --- STATE
 var attackCooldown: float = 0.0 	#counts down to 0; 0 means 'can attack'
 var iframes: float
+var baseHealth: int
 
 # --- NODE REFERENCES
 # the hitbox Area2D that sits infront of the player
@@ -23,7 +24,8 @@ var jumpVelocity = -450.0
 
 func _ready() -> void:
 	GameState.playerRef = self
-	health += GameState.upgradeHealth * GameState.HEALTH_PER_LEVEL
+	baseHealth = health
+	health = baseHealth + GameState.getHealthBonus(GameState.upgradeHealth)
 	GameState.maxHealth = health
 	GameState.currentHealth = health
 	
@@ -85,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	#position = position.clamp(Vector2.ZERO, (screen_size - Vector2(40, 40))) #the -20 will need to be adjusted later to account for different sprite size
 
 	move_and_slide()
-		# ---------- INPUT // MOVEMENT END
+		# ---------- INPUT // MOVEMENT END ----------
 
 func _mainAttack() -> void:
 	# 1. Start cooldown immediately, so this frame's press can't retrigger
@@ -111,7 +113,7 @@ func _onHurtboxAreaEntered(area: Area2D) -> void:
 		takeDamage(area.damage)
 
 func onUpgradesChanged() -> void:
-	health += GameState.HEALTH_PER_LEVEL
+	health += baseHealth + GameState.getHealthBonus(GameState.upgradeHealth)
 	GameState.maxHealth = health
 	GameState.currentHealth = health
 
