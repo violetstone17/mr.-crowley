@@ -35,7 +35,6 @@ func _ready() -> void:
 	
 	hurtbox.area_entered.connect(_onHurtboxAreaEntered)
 	
-	print("upgradeHealth: ", GameState.upgradeHealth, "  health: ", health)
 	GameState.upgradesChanged.connect(onUpgradesChanged)
 
 func _physics_process(delta: float) -> void:

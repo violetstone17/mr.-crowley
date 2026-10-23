@@ -8,9 +8,7 @@ func _ready() -> void:
 	body_exited.connect(onBodyExited)
 	
 func onBodyEntered(b: Node2D):
-	print("something is inside")
 	if b.is_in_group("player"):
-		print("player is inside")
 		playerInside = true
 
 func onBodyExited(b: Node2D):
