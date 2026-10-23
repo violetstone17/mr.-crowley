@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://v3rgsyttn0qj" path="res://scenes/enemyScenes/bonkMan.tscn" id="7_km7rp"]
 [ext_resource type="PackedScene" uid="uid://c6uqh6cniydtn" path="res://scenes/Items/dungeon_door.tscn" id="8_qivsq"]
 [ext_resource type="PackedScene" uid="uid://04en5jukf3h3" path="res://scenes/UI/HUD.tscn" id="9_2pr58"]
+[ext_resource type="Script" uid="uid://d0dh64g3cwxii" path="res://scripts/items/door.gd" id="9_yftn8"]
+[ext_resource type="PackedScene" uid="uid://bn1wa2qlufcgs" path="res://scenes/Items/levelReturn.tscn" id="10_p8pel"]
+[ext_resource type="PackedScene" path="res://scenes/Areas/cantina.tscn" id="11_0tisj"]
 
 [node name="DungeonLayer" type="Node2D" unique_id=198205434]
 
@@ -31,6 +34,11 @@ tile_set = ExtResource("1_hm4xs")
 
 [node name="door2" parent="side view level" unique_id=795439117 instance=ExtResource("2_ps37q")]
 position = Vector2(175, 62.999996)
+
+[node name="levelReturn" parent="side view level" unique_id=903761690 instance=ExtResource("10_p8pel")]
+position = Vector2(1599.9998, 511.99985)
+scale = Vector2(0.09999999, 0.09999999)
+targetLevel = ExtResource("11_0tisj")
 
 [node name="player" parent="." unique_id=902986622 instance=ExtResource("4_yftn8")]
 position = Vector2(38, 37)
@@ -58,5 +66,6 @@ scale = Vector2(2, 2)
 
 [node name="dungeonDoor" parent="." unique_id=1845087460 instance=ExtResource("8_qivsq")]
 position = Vector2(1440, 512.00006)
+script = ExtResource("9_yftn8")
 
 [node name="HUD" parent="." unique_id=1248918659 instance=ExtResource("9_2pr58")]
