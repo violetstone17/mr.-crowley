@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bn1wa2qlufcgs"]
+
+[ext_resource type="PackedScene" uid="uid://bi7cnf77vddk7" path="res://scenes/Items/door.tscn" id="1_xv7nh"]
+[ext_resource type="Script" uid="uid://dl7ij6rl8ys6a" path="res://scripts/items/levelReturn.gd" id="2_80cct"]
+
+[node name="levelReturn" unique_id=604020864 instance=ExtResource("1_xv7nh")]
+script = ExtResource("2_80cct")
+targetLevel = null
