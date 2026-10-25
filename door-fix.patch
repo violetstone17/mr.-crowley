@@ -1,0 +1,65 @@
+diff --git a/mr.-crawly/scenes/Areas/cantina.tscn b/mr.-crawly/scenes/Areas/cantina.tscn
+index 8b849d5..dcde6ff 100644
+--- a/mr.-crawly/scenes/Areas/cantina.tscn
++++ b/mr.-crawly/scenes/Areas/cantina.tscn
+@@ -6,7 +6,6 @@
+ [ext_resource type="PackedScene" uid="uid://55l26n0ue5bj" path="res://scenes/UI/shopMenu.tscn" id="3_gf0e1"]
+ [ext_resource type="Script" uid="uid://bre18r65rqlld" path="res://scripts/UI/shopCounter.gd" id="5_yvio2"]
+ [ext_resource type="PackedScene" uid="uid://bn1wa2qlufcgs" path="res://scenes/Items/levelReturn.tscn" id="6_iks6r"]
+-[ext_resource type="PackedScene" uid="uid://d0c3cr26ugvj2" path="res://scenes/Areas/cantina.tscn" id="7_wsv61"]
+ 
+ [sub_resource type="RectangleShape2D" id="RectangleShape2D_igtx2"]
+ size = Vector2(68.5, 99.5)
+@@ -53,4 +52,4 @@ color = Color(0.41568628, 0.2627451, 0.61960787, 0.72156864)
+ 
+ [node name="levelReturn" parent="." unique_id=604020864 instance=ExtResource("6_iks6r")]
+ position = Vector2(927.99994, 254.99998)
+-targetLevel = ExtResource("7_wsv61")
++targetLevelPath = "res://scenes/Areas/dungeon_layer.tscn"
+diff --git a/mr.-crawly/scenes/Areas/dungeon_layer.tscn b/mr.-crawly/scenes/Areas/dungeon_layer.tscn
+index 6ca6898..65dcbc5 100644
+--- a/mr.-crawly/scenes/Areas/dungeon_layer.tscn
++++ b/mr.-crawly/scenes/Areas/dungeon_layer.tscn
+@@ -11,7 +11,6 @@
+ [ext_resource type="PackedScene" uid="uid://04en5jukf3h3" path="res://scenes/UI/HUD.tscn" id="9_2pr58"]
+ [ext_resource type="Script" uid="uid://d0dh64g3cwxii" path="res://scripts/items/door.gd" id="9_yftn8"]
+ [ext_resource type="PackedScene" uid="uid://bn1wa2qlufcgs" path="res://scenes/Items/levelReturn.tscn" id="10_p8pel"]
+-[ext_resource type="PackedScene" uid="uid://d0c3cr26ugvj2" path="res://scenes/Areas/cantina.tscn" id="11_0tisj"]
+ 
+ [node name="DungeonLayer" type="Node2D" unique_id=198205434]
+ 
+@@ -38,7 +37,7 @@ position = Vector2(175, 62.999996)
+ [node name="levelReturn" parent="side view level" unique_id=903761690 instance=ExtResource("10_p8pel")]
+ position = Vector2(1599.9998, 511.99985)
+ scale = Vector2(0.09999999, 0.09999999)
+-targetLevel = ExtResource("11_0tisj")
++targetLevelPath = "res://scenes/Areas/cantina.tscn"
+ 
+ [node name="player" parent="." unique_id=902986622 instance=ExtResource("4_yftn8")]
+ position = Vector2(38, 37)
+diff --git a/mr.-crawly/scenes/Items/levelReturn.tscn b/mr.-crawly/scenes/Items/levelReturn.tscn
+index 5de260a..9b61b3f 100644
+--- a/mr.-crawly/scenes/Items/levelReturn.tscn
++++ b/mr.-crawly/scenes/Items/levelReturn.tscn
+@@ -5,4 +5,3 @@
+ 
+ [node name="levelReturn" unique_id=604020864 instance=ExtResource("1_xv7nh")]
+ script = ExtResource("2_80cct")
+-targetLevel = null
+diff --git a/mr.-crawly/scripts/items/levelReturn.gd b/mr.-crawly/scripts/items/levelReturn.gd
+index ecc31f8..9abdc07 100644
+--- a/mr.-crawly/scripts/items/levelReturn.gd
++++ b/mr.-crawly/scripts/items/levelReturn.gd
+@@ -1,7 +1,9 @@
+ extends "res://scripts/items/door.gd"
+ 
+-@export var targetLevel: PackedScene
++# Stored as a path (not a PackedScene) so two scenes can point at each other
++# without creating a cyclic resource reference.
++@export_file("*.tscn") var targetLevelPath: String
+ 
+ func checkDoor(body: Node2D) -> void:
+-	if body.is_in_group("player") and targetLevel != null:
+-		get_tree().change_scene_to_packed(targetLevel)
++	if body.is_in_group("player") and targetLevelPath != "":
++		get_tree().change_scene_to_file(targetLevelPath)

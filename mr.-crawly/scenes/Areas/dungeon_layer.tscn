@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://04en5jukf3h3" path="res://scenes/UI/HUD.tscn" id="9_2pr58"]
 [ext_resource type="Script" uid="uid://d0dh64g3cwxii" path="res://scripts/items/door.gd" id="9_yftn8"]
 [ext_resource type="PackedScene" uid="uid://bn1wa2qlufcgs" path="res://scenes/Items/levelReturn.tscn" id="10_p8pel"]
-[ext_resource type="PackedScene" uid="uid://d0c3cr26ugvj2" path="res://scenes/Areas/cantina.tscn" id="11_0tisj"]
 
 [node name="DungeonLayer" type="Node2D" unique_id=198205434]
 
@@ -38,7 +37,7 @@ position = Vector2(175, 62.999996)
 [node name="levelReturn" parent="side view level" unique_id=903761690 instance=ExtResource("10_p8pel")]
 position = Vector2(1599.9998, 511.99985)
 scale = Vector2(0.09999999, 0.09999999)
-targetLevel = ExtResource("11_0tisj")
+targetLevelPath = "res://scenes/Areas/cantina.tscn"
 
 [node name="player" parent="." unique_id=902986622 instance=ExtResource("4_yftn8")]
 position = Vector2(38, 37)

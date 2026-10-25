@@ -5,4 +5,3 @@
 
 [node name="levelReturn" unique_id=604020864 instance=ExtResource("1_xv7nh")]
 script = ExtResource("2_80cct")
-targetLevel = null

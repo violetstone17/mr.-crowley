@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://55l26n0ue5bj" path="res://scenes/UI/shopMenu.tscn" id="3_gf0e1"]
 [ext_resource type="Script" uid="uid://bre18r65rqlld" path="res://scripts/UI/shopCounter.gd" id="5_yvio2"]
 [ext_resource type="PackedScene" uid="uid://bn1wa2qlufcgs" path="res://scenes/Items/levelReturn.tscn" id="6_iks6r"]
-[ext_resource type="PackedScene" uid="uid://d0c3cr26ugvj2" path="res://scenes/Areas/cantina.tscn" id="7_wsv61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igtx2"]
 size = Vector2(68.5, 99.5)
@@ -53,4 +52,4 @@ color = Color(0.41568628, 0.2627451, 0.61960787, 0.72156864)
 
 [node name="levelReturn" parent="." unique_id=604020864 instance=ExtResource("6_iks6r")]
 position = Vector2(927.99994, 254.99998)
-targetLevel = ExtResource("7_wsv61")
+targetLevelPath = "res://scenes/Areas/dungeon_layer.tscn"
