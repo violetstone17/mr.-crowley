@@ -49,3 +49,20 @@ func tryBuyHealthUpgrade() -> bool:
 	upgradeHealth += 1
 	upgradesChanged.emit()
 	return true
+
+# ---- SHOP UPGRADES/ LOGIC ABOVE ----
+
+
+# ---- ENEMY DEATH LOGIC ----
+const DROP_CHANCE = {
+	"bat": 0.25,
+	"skeleton": 0.5,
+	"levelBoss": 1
+}
+
+
+func _onEnemyDeath(value: int, enemyName: String):
+	print(enemyName, " has died.")
+	var chance = DROP_CHANCE.get(enemyName, 0.0)
+	if randf() < chance:
+		coins += value

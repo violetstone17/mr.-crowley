@@ -3,6 +3,7 @@ extends EnemyBase
 @export var riseTime: float = 3.0
 
 func _ready() -> void:
+	enemyName = "skeleton"
 	super()
 	state = State.RISE
 	_startRise()

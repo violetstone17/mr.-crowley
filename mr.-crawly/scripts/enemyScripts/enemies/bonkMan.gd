@@ -6,6 +6,10 @@ const KEY_SCENE := preload("res://scenes/Items/key.tscn")
 @export var recoverTime: float = 1.0
 var stateTimer: float = 0.0
 
+func _ready() -> void:
+	enemyName = "levelBoss"
+	super()
+
 func _updateBehavior(d: float) -> void:
 	stateTimer = max(0.0, stateTimer - d)
 	match state:

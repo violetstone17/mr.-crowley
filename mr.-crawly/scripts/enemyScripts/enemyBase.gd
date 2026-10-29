@@ -3,12 +3,14 @@ extends CharacterBody2D
 
 # ---- THIS SCRIPT SETS UP BASIC VARIABLES AND DAMAGE AND DEATH FUNCTIONS ----
 
+var enemyName: String
+
 #exported variables can be tweaked per enemy in inspector
 @export var maxHealth: int = 30
 @export var speed: float = 100.0
 @export var enemyStrength: int = 10
 @export var attackCooldownTime: float = 0.5
-
+@export var value: int = 5
 
 # -- HITBOX IS TO HIT ENEMY ||| HURTBOX IS DAMAGE RECIEVED FROM ENEMY --
 @onready var hitbox: Area2D = $hitbox
@@ -27,6 +29,8 @@ var playerInRange: bool = false
 enum State { RISE, PATROL, CHASE, ATTACK, HURT, DEAD, WINDUP, RECOVER }
 var state: State = State.PATROL
 
+#signals
+signal destoryed(amount: int, ename)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +44,8 @@ func _ready() -> void:
 	attackRange.body_exited.connect(_onAttackRangeExited)
 	
 	attackShape.set_deferred("disabled", true)
+	
+	destoryed.connect(GameState._onEnemyDeath)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -70,7 +76,7 @@ func _onAttackRangeExited(b: Node2D) -> void:
 		playerInRange = false
 
 func _onHurtboxAreaEntered(area: Node2D) -> void:
-	print(name, " hurtbox touched by ", area.name, " | has damage: ", "damage" in area)
+	#print(name, " hurtbox touched by ", area.name, " | has damage: ", "damage" in area)
 
 	if "damage" in area:
 		takeDamage(area.damage)
@@ -121,14 +127,14 @@ func chase():
 
 #universal take damage function
 func takeDamage(amount: int) -> void:
-	print(name, " takeDamage called, state = ", state)
+	#print(name, " takeDamage called, state = ", state)
 	if state == State.RISE or state == State.DEAD:
 		return #invulnerable while rising and dead
 	currentHealth -= amount
-	print(name, " took ", amount, " damage. Health: ", currentHealth)
+	#print(name, " took ", amount, " damage. Health: ", currentHealth)
 	if currentHealth <= 0:
 		die()
 
 func die() -> void:
-	print(name, " has died!")
+	destoryed.emit(value, enemyName)
 	queue_free()
