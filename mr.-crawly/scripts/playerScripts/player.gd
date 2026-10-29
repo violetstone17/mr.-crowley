@@ -11,6 +11,7 @@ extends CharacterBody2D
 var attackCooldown: float = 0.0 	#counts down to 0; 0 means 'can attack'
 var iframes: float
 var baseHealth: int
+var isDead := false
 
 # --- NODE REFERENCES
 # the hitbox Area2D that sits infront of the player
@@ -126,6 +127,8 @@ func onUpgradesChanged() -> void:
 	GameState.currentHealth = health
 
 func takeDamage(amount: int) -> void:
+	if isDead:
+		return
 	if iframes > 0.0:
 		return
 	iframes = iframeDuration
@@ -141,7 +144,7 @@ func die() -> void:
 	speed = 0
 	set_physics_process(false)
 	hide()
-	$CollisionShape2D.set_deferred("disabled", false)
+	$CollisionShape2D.set_deferred("disabled", true)
 	hurtbox.set_deferred("monitoring", false)
 	print(name, " has died!")
 	playerDied.emit()
