@@ -99,12 +99,18 @@ func _mainAttack() -> void:
 	# 2. Turn hitbox on. any enemy hurtbox overlapping it this instant will fire its own area_entered signal (and the enemy handles the rest)
 	# purpose of this method: this script never touches enemy health
 	attackShape.set_deferred("disabled", false)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	if not is_inside_tree():
+		return
 	# 3. Schedule the hitbox to turn off
 	#    A Timer node would also work; a pending call is one less node to wire.
 	#    0.15s is a short "active frames" window, like a real swing arc.
 	#    If you want faster feedback on hit timing, tune this number in the Inspector
 	#    by exporting it like the others.
 	await get_tree().create_timer(0.15).timeout
+	if not is_inside_tree():
+		return
 	attackShape.set_deferred("disabled", true)
 
 func _onHurtboxAreaEntered(area: Area2D) -> void:
@@ -115,7 +121,7 @@ func _onHurtboxAreaEntered(area: Area2D) -> void:
 		takeDamage(area.damage)
 
 func onUpgradesChanged() -> void:
-	health += baseHealth + GameState.getHealthBonus(GameState.upgradeHealth)
+	health = baseHealth + GameState.getHealthBonus(GameState.upgradeHealth)
 	GameState.maxHealth = health
 	GameState.currentHealth = health
 
@@ -132,6 +138,10 @@ func takeDamage(amount: int) -> void:
 signal playerDied
 
 func die() -> void:
+	speed = 0
+	set_physics_process(false)
+	hide()
+	$CollisionShape2D.set_deferred("disabled", false)
+	hurtbox.set_deferred("monitoring", false)
 	print(name, " has died!")
 	playerDied.emit()
-	queue_free()

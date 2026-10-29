@@ -39,7 +39,7 @@ func getHealthUpgradeCost() -> int:
 	return HEALTH_UPGRADE_BASE_COST + HEALTH_COST_CURVE * upgradeHealth * upgradeHealth
 
 func getHealthBonus(level: int) -> int:
-	return roundi(HEALTH_BONUS_SCALE * log(0.8 + level))
+	return roundi(HEALTH_BONUS_SCALE * log(1 + level))
 
 func tryBuyHealthUpgrade() -> bool:
 	var cost := getHealthUpgradeCost()

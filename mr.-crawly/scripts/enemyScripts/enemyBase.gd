@@ -109,12 +109,16 @@ func attack() -> void:
 	attackShape.set_deferred("disabled", false)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
+	if not is_inside_tree():
+		return
 	#for a in hitbox.get_overlapping_areas():
 		#print("overlapping: ", a.get_parent().name, "/", a.name)
 	#print("shape disabled: ", attackShape.disabled,
 	#" | monitorable: ", hitbox.monitorable,
 	#" | overlapping: ", hitbox.get_overlapping_areas())
 	await get_tree().create_timer(0.15).timeout
+	if not is_inside_tree():
+		return
 	attackShape.set_deferred("disabled", true)
 
 # finds direct vector to player and moves accordingy
