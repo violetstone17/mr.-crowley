@@ -60,9 +60,16 @@ const DROP_CHANCE = {
 	"levelBoss": 1
 }
 
-
 func _onEnemyDeath(value: int, enemyName: String):
 	print(enemyName, " has died.")
 	var chance = DROP_CHANCE.get(enemyName, 0.0)
 	if randf() < chance:
 		coins += value
+
+# ---- PLAYER DEATH LOGIC ----
+
+signal playerDied
+
+func _onPlayerDeath():
+	print("signal made it to gamestate")
+	playerDied.emit()

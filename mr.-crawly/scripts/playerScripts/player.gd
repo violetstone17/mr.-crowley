@@ -38,6 +38,8 @@ func _ready() -> void:
 	hurtbox.area_entered.connect(_onHurtboxAreaEntered)
 	
 	GameState.upgradesChanged.connect(onUpgradesChanged)
+	
+	playerDied.connect(GameState._onPlayerDeath)
 
 func _physics_process(delta: float) -> void:
 	
@@ -127,6 +129,9 @@ func takeDamage(amount: int) -> void:
 	if health <= 0:
 		die()
 
+signal playerDied
+
 func die() -> void:
 	print(name, " has died!")
+	playerDied.emit()
 	queue_free()
