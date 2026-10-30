@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var attackCooldownTime: float = 0.5 #seconds between swings
 @export var health: int = 100
 @export var iframeDuration: float = 0.5
+@export var jumpVelocity := -450.0
 
 # --- STATE
 var attackCooldown: float = 0.0 	#counts down to 0; 0 means 'can attack'
@@ -20,8 +21,6 @@ var isDead := false
 	# The hitbox's shape. We disable/enable the SHAPE, never the Area (Lessons Log #5:
 	# the on/off switch lives on the shape).
 @onready var attackShape: CollisionShape2D = $hitbox/CollisionShape2D
-
-var jumpVelocity = -450.0
 
 func _ready() -> void:
 	GameState.playerRef = self
