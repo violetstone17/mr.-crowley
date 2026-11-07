@@ -13,7 +13,7 @@ tile_set = ExtResource("1_ndj46")
 position = Vector2(632.5554, 464.34628)
 
 [node name="Entry" type="Marker2D" parent="." unique_id=782100588]
-position = Vector2(48.988693, 711.91956)
+position = Vector2(24, 724)
 
 [node name="Exit" type="Marker2D" parent="." unique_id=1202471244]
 position = Vector2(1456.7845, 94.0853)
